@@ -1,9 +1,9 @@
 import React from 'react';
 
 const ActivityList = ({ activities, onDeleteActivity }) => {
-  // Function to handle the delete button click
+  // Define a function to handle activity deletion
   const handleDeleteClick = (index) => {
-    onDeleteActivity(index); // Call the onDeleteActivity function with the index of the activity
+    onDeleteActivity(index);
   };
 
   return (
@@ -12,8 +12,8 @@ const ActivityList = ({ activities, onDeleteActivity }) => {
       <ul>
         {activities.map((activity, index) => (
           <li key={index}>
-            {activity.name} - {activity.startTime.toLocaleTimeString()} to {activity.endTime.toLocaleTimeString()}
-            <button onClick={() => handleDeleteClick(index)}>Delete</button> {/* Add a delete button */}
+            {activity.name} - {activity.startTime.toLocaleTimeString()}
+            <button onClick={() => handleDeleteClick(index)}>Delete</button> {/* Add Delete button */}
           </li>
         ))}
       </ul>

@@ -1,38 +1,66 @@
+/* App container styles */
 .App {
   text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* Header styles */
+h2 {
+  margin: 10px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Input styles */
+input {
+  padding: 5px;
+  margin-right: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Button styles */
+button {
+  padding: 5px 15px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+/* Button hover styles */
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* List styles */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* List item styles */
+li {
+  margin: 5px 0;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table cell styles */
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+/* Table cell padding and alignment */
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Table even row background color */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }

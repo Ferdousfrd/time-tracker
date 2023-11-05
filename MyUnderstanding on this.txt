@@ -1,0 +1,216 @@
+App.js
+javascript
+Copy code
+import React, { Component } from 'react';
+import './App.css'; // Import CSS file
+import ActivityForm from './components/ActivityForm';
+import ActivityList from './components/ActivityList';
+import Analytics from './components/Analytics';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activities: [],
+    };
+  }
+
+  // Function to handle recording of activities
+  handleActivityRecording = (activity) => {
+    const activities = [...this.state.activities, activity];
+    this.setState({ activities });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <ActivityForm onActivityRecorded={this.handleActivityRecording} />
+        <ActivityList activities={this.state.activities} />
+        <Analytics activities={this.state.activities} />
+      </div>
+    );
+  }
+}
+
+export default App;
+Explanation:
+
+Import necessary libraries and components: React, ActivityForm, ActivityList, and Analytics.
+
+Define the App component, extending the Component class.
+
+In the constructor, set the initial state of the component with an empty array activities.
+
+Define the handleActivityRecording function. When an activity is recorded, it is passed as an argument, and this function adds it to the activities list in the component's state.
+
+In the render method, the main structure of the app is defined. It includes:
+
+ActivityForm: Allows users to input and record activities.
+ActivityList: Displays recorded activities with starting and stopping times.
+Analytics: Displays analytics for the total time spent on each activity.
+ActivityForm.js
+javascript
+Copy code
+import React, { Component } from 'react';
+
+class ActivityForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activityName: '',
+      startTime: null,
+      isTracking: false,
+      recordingMessage: '',
+    };
+  }
+
+  // Handle the start/stop button click
+  handleStartStopClick = () => {
+    if (this.state.isTracking) {
+      // Stop tracking
+      const endTime = new Date();
+      const activity = {
+        name: this.state.activityName,
+        startTime: this.state.startTime,
+        endTime: endTime,
+      };
+
+      this.props.onActivityRecorded(activity);
+
+      this.setState({
+        isTracking: false,
+        startTime: null,
+        activityName: '',
+        recordingMessage: 'Recording stopped',
+      });
+    } else {
+      // Start tracking
+      this.setState({
+        isTracking: true,
+        startTime: new Date(),
+        recordingMessage: 'Recording started',
+      });
+    }
+  };
+
+  // Handle activity name input change
+  handleActivityNameChange = (event) => {
+    this.setState({ activityName: event.target.value });
+  };
+
+  render() {
+    return (
+      <div>
+        <h2>Activity Tracker</h2>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter activity name"
+            value={this.state.activityName}
+            onChange={this.handleActivityNameChange}
+          />
+          <button onClick={this.handleStartStopClick}>
+            {this.state.isTracking ? 'Stop' : 'Start'}
+          </button>
+          <div>{this.state.recordingMessage}</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ActivityForm;
+Explanation:
+
+Import necessary libraries and set up the ActivityForm component, extending the Component class.
+
+In the constructor, initialize the component state with activityName, startTime, isTracking, and recordingMessage.
+
+Define handleStartStopClick to handle the start/stop button clicks. When the "Start" button is clicked, it records the start time and displays a "Recording started" message. When the "Stop" button is clicked, it records the end time, passes the activity to the parent component, and displays a "Recording stopped" message.
+
+handleActivityNameChange updates the activity name in the state when the input changes.
+
+In the render method, the UI structure for the form is defined, including the input field, buttons, and the recording message.
+
+ActivityList.js
+javascript
+Copy code
+import React from 'react';
+
+const ActivityList = ({ activities, onDeleteActivity }) => {
+  const handleDeleteClick = (index) => {
+    onDeleteActivity(index);
+  };
+
+  return (
+    <div>
+      <h3>Recorded Activities</h3>
+      <ul>
+        {activities.map((activity, index) => (
+          <li key={index}>
+            {activity.name} - {activity.startTime.toLocaleTimeString()} to {activity.endTime.toLocaleTimeString()}
+            <button onClick={() => handleDeleteClick(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ActivityList;
+Explanation:
+
+Import React and define the ActivityList component as a functional component that receives activities and onDeleteActivity as props.
+
+The handleDeleteClick function takes an index as an argument and calls the onDeleteActivity function with that index.
+
+In the render method, the component structure is defined. It displays the recorded activities as a list with starting and stopping times. Each entry includes a "Delete" button that invokes the handleDeleteClick function.
+
+Analytics.js
+javascript
+Copy code
+import React from 'react';
+
+const Analytics = ({ activities }) => {
+  const activityTimes = {};
+
+  activities.forEach((activity) => {
+    if (!activityTimes[activity.name]) {
+      activityTimes[activity.name] = 0;
+    }
+    const duration = activity.endTime - activity.startTime;
+    activityTimes[activity.name] += duration;
+  });
+
+  return (
+    <div>
+      <h3>Activity Analytics</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Time Spent (seconds)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(activityTimes).map(([activity, time], index) => (
+            <tr key={index}>
+              <td>{activity}</td>
+              <td>{(time / 1000).toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Analytics;
+Explanation:
+
+Import React and define the Analytics component as a functional component that receives activities as a prop.
+
+Calculate the total time spent on each activity by iterating through the activities array and accumulating the durations.
+
+In the render method, the component structure is defined. It displays the analytics in a table format, showing activity names and the total time spent in seconds.
+

@@ -5,16 +5,18 @@
   margin: 20px;
 }
 
-
 /* Header styles */
 h2 {
   margin: 10px 0;
+  color: #007bff; /* Change header color to blue */
 }
 
 /* Input styles */
 input {
   padding: 5px;
-  margin-right: 10px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc; /* Add a border to input fields */
+  border-radius: 4px; /* Add rounded corners */
 }
 
 /* Button styles */
@@ -24,6 +26,8 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 4px; /* Add rounded corners */
+  margin-left: 9px;
 }
 
 /* Button hover styles */
@@ -40,6 +44,8 @@ ul {
 /* List item styles */
 li {
   margin: 5px 0;
+
+  
 }
 
 /* Table styles */

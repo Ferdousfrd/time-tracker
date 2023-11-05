@@ -18,11 +18,18 @@ class App extends Component {
     this.setState({ activities });
   };
 
+  // Function to handle the deletion of activities
+  handleDeleteActivity = (index) => {
+    const updatedActivities = [...this.state.activities];
+    updatedActivities.splice(index, 1); // Remove the activity at the specified index
+    this.setState({ activities: updatedActivities });
+  };
+
   render() {
     return (
       <div className="App">
         <ActivityForm onActivityRecorded={this.handleActivityRecording} />
-        <ActivityList activities={this.state.activities} />
+        <ActivityList activities={this.state.activities} onDeleteActivity={this.handleDeleteActivity} />
         <Analytics activities={this.state.activities} />
       </div>
     );

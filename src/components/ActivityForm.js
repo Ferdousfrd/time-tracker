@@ -7,6 +7,7 @@ class ActivityForm extends Component {
       activityName: '',
       startTime: null,
       isTracking: false,
+      recordingMessage: '', // Added recordingMessage state
     };
   }
 
@@ -14,15 +15,27 @@ class ActivityForm extends Component {
   handleStartStopClick = () => {
     if (this.state.isTracking) {
       // Stop tracking
+      const endTime = new Date(); // Record the end time
+      const activity = {
+        name: this.state.activityName,
+        startTime: this.state.startTime,
+        endTime: endTime, // Add the end time to the activity
+      };
+
+      this.props.onActivityRecorded(activity); // Pass the activity to the parent component
+
       this.setState({
         isTracking: false,
         startTime: null,
+        activityName: '', // Clear the activity name
+        recordingMessage: '', 
       });
     } else {
       // Start tracking
       this.setState({
         isTracking: true,
         startTime: new Date(),
+        recordingMessage: 'Recording started', // Display recording started message
       });
     }
   };
@@ -46,6 +59,7 @@ class ActivityForm extends Component {
           <button onClick={this.handleStartStopClick}>
             {this.state.isTracking ? 'Stop' : 'Start'}
           </button>
+          <div>{this.state.recordingMessage}</div> {/* Display recording message */}
         </div>
       </div>
     );

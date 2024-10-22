@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
+import Form from "./components/Form"
 import "./style.css"
 
 export default function App() {
@@ -7,16 +8,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-      <h1>hqll</h1>  
-
+      <Form />
       <Footer /> 
     </>
   )

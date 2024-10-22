@@ -7,7 +7,7 @@ export default function Navbar(){
                 <img src={logo} alt="clock" className="header--logo"/>      
                 <a className="header--title">Tracker</a>
                 <a className="header--about">About</a>      
-                <a className="header--about">Chores</a>      
+                <a className="header--about">Settings</a>      
                 <a className="header--about">Create</a>      
             </nav>   
         </>

@@ -72,3 +72,48 @@ body {
 .footer--link:hover {
     color: #ddd;
 }
+
+
+.create--h1{
+    margin-left: 20px;
+}
+
+.create--form{
+    margin: 20px;
+}
+
+input[type="text"], input[type="email"] {
+    margin-bottom: 15px;
+    height: 30px;
+    text-indent: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: block;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 0.75rem;
+}
+
+textarea {
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: block;
+    
+}
+
+.form--btn {
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 25px;
+    margin-bottom: 10px;
+
+}
+
+.form--btn:hover {
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+}

@@ -48,7 +48,7 @@ body {
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
     color: white;
     padding: 20px;
-    margin-top: auto; /* To make sure the footer sticks to the bottom */
+    bottom: 0; /* To make sure the footer sticks to the bottom */
 }
 
 .footer--left {
@@ -116,4 +116,37 @@ textarea {
 
 .form--btn:hover {
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+.task-card {
+border: 1px solid #ccc;
+border-radius: 5px;
+padding: 15px;
+background-color: #f9f9f9;
+}
+
+.task-card h1 {
+text-transform: uppercase; /* Makes text uppercase */
+}
+
+.tag {
+background-color: #e0e0e0;
+border-radius: 3px;
+padding: 5px 10px;
+margin-right: 5px;
+
+}
+
+.timestamps {
+margin-top: 10px;
+}
+
+.container {
+margin: 20px;
 }

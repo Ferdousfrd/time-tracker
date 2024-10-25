@@ -1,9 +1,12 @@
-// App.jsx
 import React, { useEffect, useState } from 'react';
-import TaskCard from './components/TaskCard'; 
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import "./style.css"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Form from './components/Form';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import About from './components/About';
+import Settings from './components/Settings';
+import './style.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -18,13 +21,16 @@ const App = () => {
       .catch(error => console.error('Error fetching tags:', error));
   }, []);
 
-  // Fetch tasks
+   // Fetch tasks
+   const fetchTasks = async () => {
+    const response = await fetch('http://127.0.0.1:3010/tasks');
+    const data = await response.json();
+    setTasks(data);
+  };
+
   useEffect(() => {
-    fetch('http://127.0.0.1:3010/tasks')
-      .then(response => response.json())
-      .then(data => setTasks(data))
-      .catch(error => console.error('Error fetching tasks:', error));
-  }, []);
+    fetchTasks();   // Initial fetch of tasks
+  }, []);           // Only on mount
 
   // Fetch timestamps
   useEffect(() => {
@@ -35,31 +41,18 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">
+    <Router>
       <Navbar />
-      <div className="container">
-        <h1>Tasks</h1>
-        <div className="task-grid">
-          {tasks.map(task => {
-            // Get the associated timestamps for the current task
-            const taskTimestamps = timestamps.filter(ts => ts.task === task.id);
-            
-            // Get the associated tags for the current task
-            const taskTags = tags.filter(tag => task.tags.split(',').includes(tag.id.toString()));
-
-            return (
-              <TaskCard 
-                key={task.id} 
-                task={task} 
-                tags={taskTags} 
-                timestamps={taskTimestamps} 
-              />
-            );
-          })}
-        </div>
-      </div>
+      <main>
+      <Routes>
+        <Route path="/" element={<Home tasks={tasks} tags={tags} timestamps={timestamps} setTasks={setTasks}/>} />
+        <Route path="/create" element={<Form setTasks={setTasks} fetchTasks={fetchTasks}/>} />
+        <Route path="/About" element={<About />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+      </main>
       <Footer />
-    </div>
+    </Router>
   );
 };
 

@@ -1,7 +1,12 @@
 // TaskCard.jsx
 import React from 'react';
 
-const TaskCard = ({ task, tags, timestamps }) => {
+const TaskCard = ({ task, tags, timestamps, onDelete }) => {
+
+  function handleDelete() {
+    onDelete(task.id)
+  }
+
   return (
     <div className="task-card">
       <h1>{task.name}</h1>
@@ -20,6 +25,7 @@ const TaskCard = ({ task, tags, timestamps }) => {
           </p>
         ))}
       </div>
+      <button onClick={handleDelete} className='form--btn'>Delete Task</button>
     </div>
   );
 };

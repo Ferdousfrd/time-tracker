@@ -4,16 +4,15 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
+
 
 body {
     font-family: "Karla", sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 main {
@@ -28,6 +27,7 @@ main {
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
     color: white;
     padding: 20px;
+    
 }
 
 .header--logo{
@@ -104,6 +104,9 @@ input[type="text"]{
     display: block;
 }
 
+form small {
+    color: gray;
+}
 
 .form--btn {
     border-radius: 5px;
@@ -157,4 +160,14 @@ input[type="text"]{
     text-decoration: none;
     color: inherit;                 /* Inherit the color from the surrounding styling */
     cursor: pointer;
+}
+
+.light {
+    background-color: white;
+    color: black;
+  }
+  
+.dark {
+    background-color: #575050; /* Dark background for the main body */
+    color: #080808; /* Light gray text for better readability */
 }

@@ -5,13 +5,14 @@ import Form from './components/Form';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import About from './components/About';
-import Settings from './components/Settings';
 import './style.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [tags, setTags] = useState([]);
   const [timestamps, setTimestamps] = useState([]);
+  const [theme, setTheme] = useState('light')           // default theme
+
 
   // Fetch tags
   useEffect(() => {
@@ -40,15 +41,20 @@ const App = () => {
       .catch(error => console.error('Error fetching timestamps:', error));
   }, []);
 
+  const toggleTheme = () => {           // toggling between theme function
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    console.log("Clicked Theme")
+  };
+
+
   return (
     <Router>
-      <Navbar />
-      <main>
+      <Navbar toggleTheme={toggleTheme}/>
+      <main className={theme}>            {/* changing the theme depending on our state*/}
       <Routes>
         <Route path="/" element={<Home tasks={tasks} tags={tags} timestamps={timestamps} setTasks={setTasks}/>} />
         <Route path="/create" element={<Form setTasks={setTasks} fetchTasks={fetchTasks}/>} />
         <Route path="/About" element={<About />} />
-        <Route path="/settings" element={<Settings />} />
       </Routes>
       </main>
       <Footer />

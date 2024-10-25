@@ -58,8 +58,11 @@ export default function Form({ setTasks, fetchTasks }) {
                     />
                 </label>
                 <label>
-                    Tags (comma-separated)
+                    Tags (comma-separated ids.)
+                    <br />
+                    <small>Note : 1=househole-chores, 2=school, 3=hobby, 4=important, <br/>5=full-stack</small>
                     <input
+                        placeholder="example: 1, 2"
                         type="text"
                         name="tags"
                         onChange={handleChange}

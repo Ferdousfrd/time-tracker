@@ -15,6 +15,9 @@ export default function About() {
                 <li>View all tasks in a simple, user-friendly interface.</li>
                 <li>Delete tasks when they are no longer needed.</li>
                 <li>Track your tasks with timestamps to monitor progress.</li>
+                <li>
+                    Toggle between light and dark themes to personalize your experience (under construction).
+                </li>
             </ul>
 
             <h2>How to Use the App:</h2>
@@ -24,7 +27,7 @@ export default function About() {
                     Enter the task name and any associated tags (comma-separated).
                 </li>
                 <li>
-                    <strong>View Tasks:</strong> Return to the home page by clicking "Tracker"  top left, to see your list of tasks. Each task will 
+                    <strong>View Tasks:</strong> Return to the home page by clicking "Home" top left, to see your list of tasks. Each task will 
                     display its name and associated tags.
                 </li>
                 <li>

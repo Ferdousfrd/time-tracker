@@ -90,7 +90,7 @@ main {
     margin: 20px;
     border: 2px  ;
     padding: 25px;
-    width: 30rem;
+    max-width: 50rem;
 }
 
 input[type="text"]{

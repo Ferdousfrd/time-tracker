@@ -53,7 +53,7 @@ const App = () => {
       <main className={theme}>            {/* changing the theme depending on our state*/}
       <Routes>
         <Route path="/" element={<Home tasks={tasks} tags={tags} timestamps={timestamps} setTasks={setTasks}/>} />
-        <Route path="/create" element={<Form setTasks={setTasks} fetchTasks={fetchTasks}/>} />
+        <Route path="/create" element={<Form fetchTasks={fetchTasks}/>} />
         <Route path="/About" element={<About />} />
       </Routes>
       </main>

@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-export default function Form({ setTasks, fetchTasks }) {
+export default function Form({  fetchTasks }) {
     const [formData, setFormData] = useState({
         taskName: "",
         tags: "",                               // String to hold tag IDs separated by commas
         timestamp: "",                          // String for timestamp
     });
+
+    const [notification, setNotification] = useState("")        // notifiying user new task created
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -31,21 +33,31 @@ export default function Form({ setTasks, fetchTasks }) {
             }),
         });
 
-        if (response.ok) {
+        if (response.ok) {                      
             const newTask = await response.json();
-            console.log("New task created:", newTask);
+            setNotification("New task created:", newTask);          // for the notification
 
              // Call a function to fetch tasks again here
+             // after creating a new task we wanna fetch again for home view update
             fetchTasks(); 
 
             setFormData({ taskName: "", tags: "", timestamp: "" });     // Reset the form
+            setTimeout(() => setNotification(""), 3000);                // show notification then hides after 3 sec
         } else {
-            console.error("Failed to create task:", response.statusText);
+            setNotification("Failed to create task.");
+            setTimeout(() => setNotification(""), 3000);
         }
     }
 
     return (
         <div className="form--container">
+
+            {notification && (                          // notifying after new task got created
+                <div className="notification">
+                    {notification}
+                </div>
+            )}
+
             <h1 className="create--h1">Create new chores:</h1>
             <form onSubmit={handleSubmission} className="create--form">
                 <label>
@@ -62,7 +74,7 @@ export default function Form({ setTasks, fetchTasks }) {
                     <br />
                     <small>Note : 1=househole-chores, 2=school, 3=hobby, 4=important, <br/>5=full-stack</small>
                     <input
-                        placeholder="example: 1, 2"
+                        placeholder="example: 1,2"
                         type="text"
                         name="tags"
                         onChange={handleChange}
@@ -72,6 +84,7 @@ export default function Form({ setTasks, fetchTasks }) {
                 
                 <button className="form--btn">Submit</button>
             </form>
+
         </div>
     );
 }

@@ -171,3 +171,18 @@ form small {
     background-color: #575050; /* Dark background for the main body */
     color: #080808; /* Light gray text for better readability */
 }
+
+.notification {
+    margin-top: 20px;
+    padding: 10px;
+    color: white;
+    background-color: #4caf50; /* Green for success */
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.notification.error {
+    background-color: #f44336; /* Red for error */
+}

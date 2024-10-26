@@ -1,9 +1,10 @@
-// TaskCard.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
   const [timer, setTimer] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
+  const [startTime, setStartTime] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   // Function to send the timestamp to the server
   const sendTimestampToServer = async (type) => {
@@ -37,9 +38,14 @@ const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
       clearInterval(intervalId);
       setIntervalId(null);
       sendTimestampToServer(1); // Send stop timestamp to server
+      
+      const endTime = new Date();
+      const timeSpent = Math.floor((endTime - startTime) / 1000); // Calculate elapsed time in seconds
+      setElapsedTime(timeSpent);
     } else {
       // Start timer
       sendTimestampToServer(0); // Send start timestamp to server
+      setStartTime(new Date()); // Record the start time
       const id = setInterval(() => {}, 1000); // Replace with actual timer logic if needed
       setIntervalId(id);
     }
@@ -64,12 +70,15 @@ const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
         <h4>Timestamps:</h4>
         {timestamps.map(timestamp => (
           <p key={timestamp.id}>
-            {new Date(timestamp.timestamp).toLocaleString()} (Type: {timestamp.type})
+            {new Date(timestamp.timestamp).toLocaleString()} (Timer: {timestamp.type === 1 ? "stopped" : "started"})
           </p>
         ))}
+        <div>{elapsedTime > 0 && <p>In last log time spent: {elapsedTime} seconds</p>}</div>
       </div>
       <button onClick={handleDelete} className='form--btn'>Delete Task</button>
       <button onClick={timerHandler} className='timer--btn'>{timer ? "Stop" : "Start"}</button>
+
+
     </div>
   );
 };

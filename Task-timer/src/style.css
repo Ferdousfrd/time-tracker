@@ -186,3 +186,19 @@ form small {
 .notification.error {
     background-color: #f44336; /* Red for error */
 }
+
+.timer--btn{
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 25px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+
+.timer--btn:hover {
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+}

@@ -1,10 +1,17 @@
 // TaskCard.jsx
-import React from 'react';
+import React, { useState } from 'react';
 
 const TaskCard = ({ task, tags, timestamps, onDelete }) => {
 
+  const [timer, setTimer] = useState(false)         // track the timeStamp button state
+
   function handleDelete() {
     onDelete(task.id)
+  }
+
+  function timerHandler(){
+    setTimer(prev => prev === false ? true : false)
+    console.log(timer)
   }
 
   return (
@@ -26,6 +33,7 @@ const TaskCard = ({ task, tags, timestamps, onDelete }) => {
         ))}
       </div>
       <button onClick={handleDelete} className='form--btn'>Delete Task</button>
+      <button onClick={timerHandler} className='timer--btn'>{timer === true? "Stop" : "Start-Timer"}</button>
     </div>
   );
 };

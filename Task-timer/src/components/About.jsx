@@ -18,6 +18,9 @@ export default function About() {
                 <li>
                     Toggle between light and dark themes to personalize your experience (under construction).
                 </li>
+                <li>
+                    Start and stop tracking time on tasks to measure how much time you spend on them.
+                </li>
             </ul>
 
             <h2>How to Use the App:</h2>
@@ -36,7 +39,10 @@ export default function About() {
                 </li>
                 <li>
                     <strong>Track Your Tasks:</strong> Each task can be associated with timestamps to help you 
-                    keep track of when tasks were created or completed.
+                    keep track of when tasks were created or completed. You can also check the timestamps from the log book by pressing 'View Timestamp' button.
+                </li>
+                <li>
+                    <strong>View Time Spent:</strong> After starting and stopping the timer, you will be able to see the total time spent on each task in hours, minutes, and seconds.
                 </li>
             </ol>
             <p>

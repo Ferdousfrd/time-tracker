@@ -208,3 +208,10 @@ form small {
 .timer--btn:hover {
     background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
 }
+
+.timer-display {
+    border: 1px  ;
+    padding: 6px;
+    margin-top: 10px;
+    background-color: #e0e0e0;
+}

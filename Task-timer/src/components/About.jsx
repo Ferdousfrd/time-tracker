@@ -39,7 +39,7 @@ export default function About() {
                 </li>
                 <li>
                     <strong>Track Your Tasks:</strong> Each task can be associated with timestamps to help you 
-                    keep track of when tasks were created or completed. You can also start and stop a timer for each task to measure how much time you spend on it.
+                    keep track of when tasks were created or completed. You can also check the timestamps from the log book by pressing 'View Timestamp' button.
                 </li>
                 <li>
                     <strong>View Time Spent:</strong> After starting and stopping the timer, you will be able to see the total time spent on each task in hours, minutes, and seconds.

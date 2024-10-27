@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
   const [timer, setTimer] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const navigate = useNavigate();
 
   // Function to send the timestamp to the server
   const sendTimestampToServer = async (type) => {
@@ -56,6 +58,10 @@ const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
     onDelete(task.id);
   };
 
+  const viewTimestamps = () => {
+    navigate(`/timestamps/${task.id}`);
+  };
+
   return (
     <div className="task-card">
       <h1>{task.name}</h1>
@@ -66,19 +72,13 @@ const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
           </span>
         ))}
       </div>
-      <div className="timestamps">
-        <h4>Timestamps:</h4>
-        {timestamps.map(timestamp => (
-          <p key={timestamp.id}>
-            {new Date(timestamp.timestamp).toLocaleString()} (Timer: {timestamp.type === 1 ? "stopped" : "started"})
-          </p>
-        ))}
-        <div>{elapsedTime > 0 && <p>In last log time spent: {elapsedTime} seconds</p>}</div>
-      </div>
-      <button onClick={handleDelete} className='form--btn'>Delete Task</button>
-      <button onClick={timerHandler} className='timer--btn'>{timer ? "Stop" : "Start"}</button>
-
-
+      <button onClick={handleDelete} className="form--btn">Delete Task</button>
+      <button onClick={timerHandler} className="timer--btn">
+        {timer ? "Stop" : "Start"}
+      </button>
+      <button onClick={viewTimestamps} className="timer--btn">
+        View Timestamps
+      </button>
     </div>
   );
 };

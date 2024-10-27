@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
@@ -6,6 +5,7 @@ import Form from './components/Form';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import About from './components/About';
+import TimestampsPage from './components/TimestampsPage'; // Import TimestampsPage
 import './style.css';
 
 const App = () => {
@@ -56,6 +56,7 @@ const App = () => {
           <Route path="/" element={<Home tasks={tasks} tags={tags} timestamps={timestamps} setTasks={setTasks} fetchTimestamps={fetchTimestamps} />} />
           <Route path="/create" element={<Form fetchTasks={fetchTasks} />} />
           <Route path="/About" element={<About />} />
+          <Route path="/timestamps/:taskId" element={<TimestampsPage timestamps={timestamps} />} />
         </Routes>
       </main>
       <Footer />

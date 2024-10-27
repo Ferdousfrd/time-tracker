@@ -26,7 +26,7 @@ const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
           {notify}
         </div>
       )}
-      <h1>Tasks</h1>
+      <h1>Tasks List</h1>
       <div className="task-grid">
         {tasks.map(task => {
           const taskTimestamps = timestamps.filter(ts => ts.task === task.id);
@@ -39,7 +39,7 @@ const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
               tags={taskTags}
               timestamps={taskTimestamps}
               onDelete={handleDelete}
-              fetchTimestamps={fetchTimestamps} // Pass fetchTimestamps to TaskCard
+              fetchTimestamps={fetchTimestamps} // Passing fetchTimestamps to TaskCard
             />
           );
         })}

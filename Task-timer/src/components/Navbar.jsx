@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/clock.png";
 
-export default function Navbar({ toggleTheme }) {
+export default function Navbar({ toggleTheme, darkmode }) {
     const location = useLocation();
     const isOnCreateOrAboutPage = location.pathname === '/create' || location.pathname === '/about';
     return (

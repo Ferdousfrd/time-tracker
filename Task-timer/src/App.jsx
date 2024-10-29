@@ -5,7 +5,7 @@ import Form from './components/Form';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import About from './components/About';
-import TimestampsPage from './components/TimestampsPage'; // Import TimestampsPage
+import TimestampsPage from './components/TimestampsPage'; 
 import './style.css';
 
 const App = () => {
@@ -29,8 +29,13 @@ const App = () => {
     setTasks(data);
   };
 
+
+  // instad of wrapping fetchTaks around with useEffect we seperately defining it above 
+  // and calling it later in useEffect so we can use fetchTask in some other places too.
+  // Or else it will get messy. 
+
   useEffect(() => {
-    fetchTasks(); // Initial fetch of tasks
+    fetchTasks();         // Initial fetch of tasks
   }, []);
 
   // Fetch timestamps
@@ -50,7 +55,9 @@ const App = () => {
 
   return (
     <Router>
+
       <Navbar toggleTheme={toggleTheme} />
+
       <main className={theme}>
         <Routes>
           <Route path="/" element={<Home tasks={tasks} tags={tags} timestamps={timestamps} setTasks={setTasks} fetchTimestamps={fetchTimestamps} />} />
@@ -59,7 +66,9 @@ const App = () => {
           <Route path="/timestamps/:taskId" element={<TimestampsPage timestamps={timestamps} />} />
         </Routes>
       </main>
+
       <Footer />
+      
     </Router>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TaskCard from './TaskCard';
 
 const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
+  
   const [notify, setNotify] = useState("");
 
   const handleDelete = async (id) => {
@@ -11,7 +12,7 @@ const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
 
     if (response.ok) {
       setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
-      setNotify(`Task with id ${id} deleted`);
+      setNotify(`Task with id ${id} deleted`);      // get a prompt notification for 3 sec. Good Ux
       setTimeout(() => setNotify(""), 3000);
     } else {
       setNotify("Failed to delete task:", response.statusText);
@@ -21,12 +22,15 @@ const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
 
   return (
     <div className="container">
+
       {notify && (
         <div className="notification">
           {notify}
         </div>
       )}
+
       <h1>Tasks List</h1>
+
       <div className="task-grid">
         {tasks.map(task => {
           const taskTimestamps = timestamps.filter(ts => ts.task === task.id);
@@ -42,6 +46,7 @@ const Home = ({ tasks, tags, timestamps, setTasks, fetchTimestamps }) => {
               fetchTimestamps={fetchTimestamps} // Passing fetchTimestamps to TaskCard
             />
           );
+          
         })}
       </div>
     </div>

@@ -94,7 +94,10 @@ const TaskCard = ({ task, tags, timestamps, onDelete, fetchTimestamps }) => {
       {/* Timer Display */}
       <div className={timer? "timer-display" : ""}>
         {timer ? (
-          <p>Time Tracker: {formatTime(elapsedTime)}</p>
+          <>
+            <div className='timer--status'>Active</div>
+            <p>Time Tracker: {formatTime(elapsedTime)}</p>
+          </>
         ) : (
           lastSpentTime !== null && (
             <p>Last time you spent on this task: {formatTime(lastSpentTime)}</p>

@@ -59,6 +59,7 @@ export default function Form({  fetchTasks }) {
             )}
 
             <h1 className="create--h1">Create new chores:</h1>
+            
             <form onSubmit={handleSubmission} className="create--form">
                 <label>
                     Task Name

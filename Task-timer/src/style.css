@@ -214,4 +214,7 @@ form small {
     padding: 6px;
     margin-top: 10px;
     background-color: #e0e0e0;
+    display: block;
+    text-align: center;
 }
+

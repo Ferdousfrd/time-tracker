@@ -4,12 +4,13 @@ A full-stack **Task Time Tracker** application built with **React** on the front
 
 ## Features
 
-- Track time spent on individual tasks with a start/stop timer
-- View timestamp logs for each task on a separate page
+- View all tasks in a simple, user-friendly interface
+- Create new tasks
 - Delete tasks as needed
 - Backend API for storing tasks, timestamps, and tags
-- User-friendly UI with grid-based task layout and responsive design
-
+- Toggle between light and dark themes to personalize your experience (styling under construction)
+- Start and stop tracking time on tasks to measure how much time you spend on them
+ 
 ---
 
 ## Getting Started
@@ -67,13 +68,13 @@ The following key dependencies are used in this project:
 
 1. Frontend (React):
  
-- react-router-dom for routing
-- @vitejs/plugin-react (if not installed globally with Vite)
+   - react-router-dom for routing
+   - @vitejs/plugin-react (if not installed globally with Vite)
 
 2. Backend (Express):
-- express for creating the server
-- cors to enable cross-origin requests
-- body-parser for handling JSON request bodies
+   - express for creating the server
+   - cors to enable cross-origin requests
+   - body-parser for handling JSON request bodies
 (previously used npm install command would take care of all these)
 
 ### Running the App
@@ -83,16 +84,6 @@ In each directory (frontend and backend), you can use the following scripts:
     npm run dev => Runs the frontend development server (Vite).
     node server.js => Starts the backend server (Express).
 
-
-
-Key Features:
-Create new tasks.
-Assign tags to categorize tasks for better organization.
-View all tasks in a simple, user-friendly interface.
-Delete tasks when they are no longer needed.
-Track your tasks with timestamps to monitor progress.
-Toggle between light and dark themes to personalize your experience (under construction).
-Start and stop tracking time on tasks to measure how much time you spend on them.
 
 ### Usage
 

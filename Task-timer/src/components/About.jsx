@@ -2,6 +2,7 @@ export default function About() {
     return (
         <div className="form--container">
             <h1>Task Management App</h1>
+            <h3>Author : Md Fakhruddin Ferdous</h3>
             <p>
                 Welcome to the Task Management App! This application is designed to help you
                 manage your tasks efficiently. Whether you have daily chores, work assignments,
@@ -45,10 +46,19 @@ export default function About() {
                     <strong>View Time Spent:</strong> After starting and stopping the timer, you will be able to see the total time spent on each task in hours, minutes, and seconds.
                 </li>
             </ol>
-            <p>
-                We hope this app helps you stay organized and productive! If you have any feedback or suggestions,
-                please reach out.
-            </p>
+
+            <h2>How to Use the App:</h2>
+            <ol>
+                <li>Google: to look for the causes of errors and read documentaions.</li>
+                <li>Chat-gpt: to get diffetrent views on persistant bugs fixing or get idea in implementing features</li>
+            </ol>
+
+            <h2>Hours spent : </h2>
+            <p>35 hours approx. in total</p>
+
+            <h2>Github repo :</h2>
+            <p>You can see the codes, branches created for features and commit messages here.</p>
+            <a target="_blank" href="https://github.com/Ferdousfrd/time-tracker">https://github.com/Ferdousfrd/time-tracker</a>
         </div>
     );
 }
